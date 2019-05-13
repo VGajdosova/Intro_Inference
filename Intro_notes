@@ -83,19 +83,51 @@ https://sublimetutor.com/
 (pozn: nachádza sa pod user/.ssh)
 
 
-* ssh MENOUSERA@82.113.61.179 -p 4994
+* `ssh MENOUSERA@82.113.61.179 -p 4994`
 * zadať lokálne heslo na pripojenie
+
+- Ak sa zadá MENOUSERA a enter, pustí to do zložky CODE a spustí midnight commandera (mc). MC sa zatvára pomocou F10 a SSH relácia sa zatvára pomocou Ctrl + D (mac: Control + D) 
 
 #### Vytvorenie Aliasu
 1. súbor **.bash_profile** (v prípade, že nie je, tak vytvoriť pomocou touch .bash_profile)
 2. do súboru pridať:
 
-- alias Rengine='ssh MENOUSERA@82.113.61.179 -p 4994'
+- `alias Rengine='ssh MENOUSERA@82.113.61.179 -p 4994'`
 - uložiť a zavrieť
 
 3. Znovu otvoriť nový terminál a SSH sa spustí zadaním **Rengine**
 
-4. Ak sa zadá MENOUSERA a enter, pustí to do zložky CODE a spustí midnight commandera (mc). MC sa zatvára pomocou F10 a SSH relácia sa zatvára pomocou Ctrl + D (mac: Control + D) 
+
+### Sprístupnenie sieťovej zložky
+
+1. Vytvoriť v home adresár `InferenceTech/Rengine`
+
+2. Nainštalovať [Fuse for Mac a SSHFS](https://osxfuse.github.io)
+
+3. V termináli 
+`sshfs -p 4994 MENOUSERA@82.113.61.179:/stor/a01/  ~/InferenceTech/Rengine/`
+
+4. Mal by sa nazdielať disk z Rengine do adresára *InferenceTech/Rengine* a ukazuje OSXFUSE ako namountovaný
+
+5. Na odpojenie:  
+ `umount ~/InferenceTech/Rengine/`
+ - teraz je možné, že bude adresár prázdny
+
+ 6. `sshfs -o defer_permissions -p 4994 ronek@82.113.61.179:/stor/a01/  ~/InferenceTech/Rengine/`
+
+
+#### Vytvorenie Aliasu
+```
+alias mRengine='sshfs -o defer_permissions -p 4994 MENOUSERA@82.113.61.179:/stor/a01/  ~/InferenceTech/Rengine/ '
+alias uRengine='umount ~/InferenceTech/Rengine/'
+```
+
+Potom sa to používa tak, že sa zapne terminál, disk se pripojí pomocou Rengine (aka mount Rengine), odpojí pomocou uRengine, ssh Rengine. Čiže mRengine pripojí disk na Rengine do lokálnej zložky užívateľa `~/InferenceTech/Rengine/`
+
+
+
+
+
 
 
 
