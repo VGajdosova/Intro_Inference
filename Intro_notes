@@ -1,0 +1,84 @@
+
+# Inštalácia Sublime text a pluginu packagecontrol
+
+1. Prvným krokom po nainštalovaní sublime text je inštálacia **PKG CONTROL**:
+[Package control](https://packagecontrol.io/installation) 
+
+2. Po jeho inštalácii: RESTART sublime textu. Následne spustenie **COMMAND PALETTE**  
+(win: ctr+shift+p, mac: command+shift+p)
+
+3. napísať *install package*, objaví sa "package Control: Install Package" a následne napísať **REPL**
+
+4. RESTART
+
+5. Nastavenie layoutu v sublime text menu: *VIEW / LAYOUT / Columns:2* 
+
+6. Dať kurzor do pravého stĺpca a zapnúť **COMMAND PALETTE**  
+(win: ctr+shift+p, mac: command+shift+p) a tam napísať **REPL** a z ponúknutých možností vybrať **sublimeREPL: R**
+
+- týmto by sa mal spustiť interaktivný terminál nášho lokálneho R
+
+##### POZNÁMKY:  
+
+* je nutné pracovať so súborom typu .R v Sublime texte (vpravo dolu)
+
+* teraz je možné v lavom okne písať kód, napr: *hist(rnorm(100))*. Takže sa následne zobrazí okno s histogramom
+
+* do repl sa pošle riadok kódu pomocou: win: **ctrl+shift+r** (mac: **option+shift+r**)
+
+* cez menu je možné poslať príkazy nasledovne: *tools - sublimeREPL - tranfer (eval) to repl - lines*
+
+* v sublime text sú 2 typy konfiguračných souborov, user a default. Nikdy needitovať default vždy len user, pretože default sa môže prepísať pri update
+
+7. zvoliť v **MENU / PREFERENCES / KEY BINDINGS** 
+
+* vpravo by sa mal objaviť sublime - keymap -- User. Vložiť
+
+
+## KOD PRE WINDOWS aj MAC:
+```
+
+[
+        // R
+        { "keys": ["alt+-"], "command": "insert_snippet", "args": {"contents": " <- " }},
+        { "keys": ["shift+ctrl+/"], "command": "insert_snippet", "args": {"contents": "#' " }},
+
+        // SublimeREPL
+        { "keys": ["alt+shift+r"], "command": "repl_transfer_current", "args": {"scope": "file"}},
+
+        { "keys": ["ctrl+shift+r"], "command": "repl_transfer_current", "args": {"scope": "lines"}},
+
+        { "keys": ["ctrl+alt+r"], "command": "repl_transfer_current", "args": {"scope": "selection"}}
+]
+```
+
+- **ctrl+shift+r**  je spustenie riadku, na ktorom je kurzor 
+- **ctrl+alt+r** je spustenie výberu
+- **alt+shift+r**  je spustenie celého skriptu
+- ak sa umiestni kurzor do ľavého stĺpca a dá **ctrl+n**  (mac: **command+n** ), otvorí sa nový neuložený tab
+- ak dáš **ctrl+shift+p** a potom napíšeš "syntax r" a potvrdíš, tak potom keď sa zmačkne **alt + -** (alt a pomlčka), tak to urobí R-kovú šípku
+- je tam ešte jedna custom skratka, **ctrl  + /** tak to urobí v kóde znak comment bez ohľadu na aktuálny jazyk
+- príkaz **ctrl +  shift + /** urobí R ** #'** , to využívá roxygen2 (na písanie dokumentace v r)
+
+
+#### KONVERZNÉ SKRATKY WIN-MAC PRÍKAZOV
+
+[Skratky Win/Mac](https://www.lifewire.com/what-are-windows-keyboard-equivalents-to-mac-2260203)
+
+MAC / WINDOWS:
+
+Control - CTRL  
+Option - Alt  
+
+
+
+#### Tutorial:
+https://sublimetutor.com/
+
+nove
+dddd
+trts
+dff
+
+
+
