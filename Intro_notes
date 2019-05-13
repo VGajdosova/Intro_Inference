@@ -76,6 +76,26 @@ Option - Alt
 https://sublimetutor.com/
 
 
+### SSH - generovanie prístupu pre MAC
+
+1. Vygenerovať si kľúč: [link](https://www.siteground.com/kb/how_to_generate_an_ssh_key_pair_in_mac_os/)
+2. Pokiaľ sa používajú dva počítače, je nutné kľúč preniesť na druhý počítač.
+(pozn: nachádza sa pod user/.ssh)
+
+
+* ssh MENOUSERA@82.113.61.179 -p 4994
+* zadať lokálne heslo na pripojenie
+
+#### Vytvorenie Aliasu
+1. súbor **.bash_profile** (v prípade, že nie je, tak vytvoriť pomocou touch .bash_profile)
+2. do súboru pridať:
+
+- alias Rengine='ssh MENOUSERA@82.113.61.179 -p 4994'
+- uložiť a zavrieť
+
+3. Znovu otvoriť nový terminál a SSH sa spustí zadaním **Rengine**
+
+4. Ak sa zadá MENOUSERA a enter, pustí to do zložky CODE a spustí midnight commandera (mc). MC sa zatvára pomocou F10 a SSH relácia sa zatvára pomocou Ctrl + D (mac: Control + D) 
 
 
 
